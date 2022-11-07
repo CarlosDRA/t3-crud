@@ -1,16 +1,12 @@
 import {prisma} from "../../server/db/client";
+import ProductPage from "../../components/ProductPage";
 
-const ProductPage = ({product} : {product: any}) => {
+const ProductName = ({product} : {product: any}) => {
     return(
-        <div>
-            <h2>{product.name}</h2>
-            <p>{product.description}</p>
-            <p>Stock: {product.stock}</p>
-            <p>Price: {product.price} ¢</p>
-        </div>
+        <ProductPage product={product} />
     )
 }
-export default ProductPage;
+export default ProductName;
 
 export async function getStaticProps({ params } : {params:any}) {
 
