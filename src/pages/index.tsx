@@ -25,6 +25,9 @@ const Home: NextPage = () => {
           <li className="mt-3">
             <Link href="/products/1" className={`${linkStyle} font-bold`}>Go to /products/[slug].tsx</Link>
           </li>
+          <li className="mt-3">
+            <Link href="/list" className={`${linkStyle}`}>Products list</Link>
+          </li>
         </ul>
       </main>
     </>
