@@ -1,12 +1,12 @@
-import { type NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
+import Navbar from "../components/Navbar";
 
-//import { trpc } from "../utils/trpc";
 
-const Home: NextPage = () => {
+import Products from "../components/Products";
 
-  const linkStyle:string = "text-xl underline text-blue-500"
+import {prisma} from "../server/db/client";
+
+const List = ({ products } : {products:any}) => {
 
   return (
     <>
@@ -16,22 +16,23 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Navbar />
       <main>
-        <h1 className="text-9xl text-center font-bold">Products list:</h1>
-        <ul>
-          <li className="mt-3">
-            <Link href="/about" className={`${linkStyle}`}>Go to about page</Link>
-          </li>
-          <li className="mt-3">
-            <Link href="/products/1" className={`${linkStyle} font-bold`}>Go to /products/[slug].tsx</Link>
-          </li>
-          <li className="mt-3">
-            <Link href="/list" className={`${linkStyle}`}>Products list</Link>
-          </li>
-        </ul>
+        <h1 className="text-7xl text-center font-bold mt-5">Lista de productos:</h1>
+        <Products products={products} />
       </main>
     </>
-  );
+  )
 };
 
-export default Home;
+export default List
+
+export async function getStaticProps() {
+  const products = await prisma.product.findMany();
+  
+  return {
+      props: {
+          products
+      }
+  }
+};
