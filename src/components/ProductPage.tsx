@@ -1,9 +1,12 @@
+import Image from "next/image";
+import illustration from "public/image.svg";
+
 const ProductPage = ({ product } : {product:any}) => {
 
     return(
         <div className=" pt-20 px-80 grid grid-rows-2 gap-5 grid-cols-[max-content_1fr]">
-            <div className=" w-96 " >
-                <img src="public/image.svg" alt="placeholder" className=" w-full h-full "/>
+            <div className=" w-96 grid justify-items-center items-center hover:shadow-md cursor-pointer " >
+                <Image src={illustration} alt="placeholder" width="50" height="50" />
             </div>
             <div>
                 <h2 className="font-medium text-4xl">{product.name}</h2>
