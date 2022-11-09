@@ -10,8 +10,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Example {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+//Using price as string since number types only show as 1 digit decimals.
+model product {
+  name        String   @id
+  description String 
+  stock       Int @default(5)
+  price       String
 }
